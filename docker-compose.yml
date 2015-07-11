@@ -1,0 +1,18 @@
+db:
+  image: postgres:9.3
+  expose:
+    - '5432'
+
+app:
+  build: .
+  volumes:
+    - '3000:3000'
+  links:
+    - db
+  volumes_from:
+    - bundle
+
+bundle:
+  image: app_desafio
+  volumes:
+    - /bundle
